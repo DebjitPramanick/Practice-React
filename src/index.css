@@ -4,16 +4,17 @@ body{font-family: Arial, Helvetica, sans-serif;background-color: rgb(223, 223, 2
 
 .booklist{max-width: 1170px;padding: 18px;border: 1ps solid black;display: grid;gap: 1.4rem;margin: auto;}
 
-.bookimage{width: 100%;display: flex;justify-content: center;}
-.bookcards{background-color: white;padding: 18px;border-radius: 6px;box-shadow: 0 0 14px grey;}
+.bookimage{width: 100%;display: flex;justify-content: center;background-color:rgb(2, 122, 158);}
+.bookimage img{height: 300px;}
+.bookcards{background-color: white;padding: 18px;border-radius: 6px;box-shadow: 0 0 14px grey;display: flex;flex-direction: column;justify-content: space-between;}
 .bookname{color: black;text-decoration: none;font-size: 16px;display: block;font-weight: bold;margin-top: 40px;}
-.bookauthor{color: grey;margin-top: 12px;text-transform: uppercase;}
-.bookprice{margin-top: 16px;color: rgb(2, 122, 158);font-size: 18px;font-weight: 800;border: 1px rgb(2, 122, 158) solid;padding: 10px;text-align: center;cursor: pointer;border-radius: 4px;transition: 1s;}
-
+.bookauthor{color: grey;margin-top: 12px;text-transform: uppercase;font-size: 12px;}
+.bookprice{margin-top: 16px;color: rgb(2, 122, 158);font-size: 18px;font-weight: 800;}
+.buybtn{width: 100%;margin-top: 30px;padding:14px;text-align: center;text-transform: uppercase;color: rgb(2, 122, 158);font-size: 16px;font-weight: 900;border: rgb(2, 122, 158) 1px solid;border-radius: 6px;transition: 0.5s;cursor: pointer;}
 
 /*---------Hover Effect------*/
 
-.bookprice:hover{background-color:rgb(2, 122, 158);color:white;}
+.buybtn:hover{background-color:rgb(2, 122, 158);color:white;}
 
 @media(min-width: 768px){
     .booklist{grid-template-columns: repeat(3, 1fr);}
