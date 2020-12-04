@@ -10,7 +10,7 @@ body{font-family: Arial, Helvetica, sans-serif;background-color: rgb(223, 223, 2
 .bookname{color: black;text-decoration: none;font-size: 16px;display: block;font-weight: bold;margin-top: 40px;}
 .bookauthor{color: grey;margin-top: 12px;text-transform: uppercase;font-size: 12px;}
 .bookprice{margin-top: 16px;color: rgb(2, 122, 158);font-size: 18px;font-weight: 800;}
-.buybtn{width: 100%;margin-top: 30px;padding:14px;text-align: center;text-transform: uppercase;color: rgb(2, 122, 158);font-size: 16px;font-weight: 900;border: rgb(2, 122, 158) 1px solid;border-radius: 6px;transition: 0.5s;cursor: pointer;}
+.buybtn{width: 100%;margin-top: 30px;padding:14px;text-align: center;text-transform: uppercase;color: rgb(2, 122, 158);font-size: 16px;font-weight: 900;border: rgb(2, 122, 158) 1px solid;outline : 0;border-radius: 6px;transition: 0.5s;cursor: pointer;}
 
 /*---------Hover Effect------*/
 
