@@ -1,25 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//Import CSS file
 import './index.css'
-
-//Importing book data
-import {books} from './books'
-
-//Importing Book comonent
-import Book from './Book'
+import Form from './Form';
+import Routing from './Routing';
 
 
-function Booklist(){
+function Practice(){
+
   return (
-  <section className="booklist">
-    {books.map((book) => {
-      return <Book key={book.id} book={book}/>
-    })}
-  </section>
-  );
+    <Routing/>
+  )
 }
 
 
-ReactDOM.render(<Booklist/>,document.getElementById('root'));
+ReactDOM.render(<Practice/>,document.getElementById('root'));
