@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
+import Axios from 'axios'
 
 const API = () => {
-    return (
+
+    const url = "https://official-joke-api.appspot.com/random_joke";
+
+    const [items,setItems] = useState("");
+
+    useEffect(()=>{
+        Axios.get(url)
+        .then( resp =>{
+            console.log(resp);
+            setItems(resp.data.setup + "..." + resp.data.punchline);
+        })
+        },[]);
+
+    return(
         <div className="container">
-            This is API call page.
+            <div className="api-card">
+                {items}
+            </div>
         </div>
     )
 }

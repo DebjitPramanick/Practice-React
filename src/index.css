@@ -8,6 +8,10 @@ body{font-family: Arial, Helvetica, sans-serif;background-color:lightgray;}
     align-items: center;
     justify-content: space-between;
 }
+.api-card{
+    background-color: lightgray;
+    padding: 40px;
+}
 
 .card p{
     font-size: 40px;
