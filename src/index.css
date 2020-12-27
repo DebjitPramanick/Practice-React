@@ -22,7 +22,7 @@ body{font-family: Arial, Helvetica, sans-serif;background-color:lightgray;}
 .container{
     max-width: 1000px;
     margin: 40px auto;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(75, 70, 70);
     padding: 40px;
 }
 .cardContainer{
@@ -64,4 +64,63 @@ form input{
     background-color: rgb(255, 255, 255);
     outline: 0;
     border: rgb(139, 139, 139) solid 4px;
+}
+
+
+
+/*Slider css------------------------------*/
+
+
+.App {
+  text-align: center;
+}
+ 
+.App-logo {
+  height: 40vmin;
+}
+ 
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+ 
+.App-link {
+  color: #09d3ac;
+}
+
+
+ 
+.slides .slick-prev,
+.slides .slick-next {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+
+.slides {
+  position: relative;
+}
+
+.slides .slick-prev,
+.slides .slick-next {
+  position: absolute;
+  top: 50%;
+  z-index:1 ;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.slides .slick-prev {
+  left: 5%;
+}
+
+.slides .slick-next {
+  right: 5%;
 }
