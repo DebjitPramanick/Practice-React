@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 
 const LocalStorage = () => {
 
@@ -7,34 +7,30 @@ const LocalStorage = () => {
     const people = [];
 
     const addPeople = (e) =>{
-
+        
         e.preventDefault();
 
-        const data =
-            {
-                name: person,
-                key: key
-            };
+        const data=[{
+            name: person,
+            key: key
+        }];
         
-        if(key && person){
-            people.push((people) => (
-                [...people,data]
-            ));
+        setKey("");
+        setPerson("");
+        localStorage.setItem("people",JSON.stringify(data));
         
-            setKey("");
-            setPerson("");
-            localStorage.setItem("people",JSON.stringify(people));
-        }
-        
-        console.log(people);
-
+        console.log("Updated");   
     }
+
 
     const removePeople = (e) =>{
         e.preventDefault();
 
         localStorage.clear();
     }
+
+
+    const allpeople = JSON.parse(localStorage.getItem("people"));
 
     return (
         <div className="container">
@@ -52,6 +48,15 @@ const LocalStorage = () => {
                 </div>
                 
             </form>
+
+            <div className="cardContainer">
+                {allpeople && allpeople.map(p => (
+                    <div className="card" key={p.key}>
+                        <h2>{p.name}</h2>
+                    </div>
+                ))}
+                
+            </div>
 
             
         </div>
