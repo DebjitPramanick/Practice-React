@@ -25,7 +25,7 @@ const Search = () => {
 
 
     return (
-        <div className="container">
+        <div className="container slider-container">
             <form>
                 <input type="text" placeholder="Search poeple" onChange={e => setSearch(e.target.value)}/>
             </form>
@@ -34,10 +34,13 @@ const Search = () => {
             <Slider {...settings}>
                 {filteruser.map((user)=>{
                 return(
-                    <div className="card" key={user.id}>
-                        <h2>{user.name}</h2>
-                        <p>{user.age}</p>
+                    <div className="cardContainer" key={user.id}>
+                        <div className="card">
+                            <h2>{user.name}</h2>
+                            <p>{user.age}</p>
+                        </div>
                     </div>
+                    
                     )
                 })}
 
