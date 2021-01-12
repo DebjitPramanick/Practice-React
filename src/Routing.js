@@ -11,7 +11,7 @@ import Contact from './components/Contact'
 import Counter from './components/Counter'
 import Home from './components/Home'
 import LocalStorage from './components/LocalStorage'
-import Redux from './components/Redux'
+import Redux from './components/Redux/Redux'
 import Search from './components/Search'
 
 const Routing = () => {
