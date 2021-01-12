@@ -9,6 +9,7 @@ import {
 import API from './components/API'
 import Contact from './components/Contact'
 import Counter from './components/Counter'
+import DragAndDrop from './components/Drag&Drop/DragAndDrop'
 import Home from './components/Home'
 import LocalStorage from './components/LocalStorage'
 import Redux from './components/Redux/Redux'
@@ -27,6 +28,7 @@ const Routing = () => {
                         <li><Link to="/counter">Counter</Link></li>
                         <li><Link to="/localstorage">LocalStorage</Link></li>
                         <li><Link to="/redux">Redux</Link></li>
+                        <li><Link to="/draganddrop">Drag & Drop</Link></li>
                     </ul>
                 </nav>
             </div>
@@ -49,6 +51,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/redux">
                     <Redux/>
+                </Route>
+                <Route path="/draganddrop">
+                    <DragAndDrop/>
                 </Route>
                 <Route path="/">
                     <Home/>

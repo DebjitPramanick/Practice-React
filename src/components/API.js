@@ -13,7 +13,7 @@ const API = () => {
             console.log(resp);
             setItems(resp.data.setup + "..." + resp.data.punchline);
         })
-        },[]);
+    },[]);
 
     return(
         <div className="container">

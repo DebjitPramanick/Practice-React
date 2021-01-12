@@ -169,3 +169,18 @@ form input{
   outline: 0;
   cursor: pointer;
 }
+
+
+
+/*Drag & Drop ------------------------------*/
+
+.field-container{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 20px;
+}
+
+.field{
+  background-color: lightgray;
+  padding: 20px;
+}
