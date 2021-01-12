@@ -11,6 +11,7 @@ import Contact from './components/Contact'
 import Counter from './components/Counter'
 import Home from './components/Home'
 import LocalStorage from './components/LocalStorage'
+import Redux from './components/Redux'
 import Search from './components/Search'
 
 const Routing = () => {
@@ -25,6 +26,7 @@ const Routing = () => {
                         <li><Link to="/search">Search</Link></li>
                         <li><Link to="/counter">Counter</Link></li>
                         <li><Link to="/localstorage">LocalStorage</Link></li>
+                        <li><Link to="/redux">Redux</Link></li>
                     </ul>
                 </nav>
             </div>
@@ -44,6 +46,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/localstorage">
                     <LocalStorage/>
+                </Route>
+                <Route path="/redux">
+                    <Redux/>
                 </Route>
                 <Route path="/">
                     <Home/>
