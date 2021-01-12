@@ -5,7 +5,7 @@ import { penReducer, pencilReducer } from "./Reducer"
 
 const createStore = redux.createStore;
 const combineReducers = redux.combineReducers;
-const applyMiddleWare = redux.applyMiddleware;
+const applyMiddleWare = redux.applyMiddleware; //Creating middleware
 const logger = reduxLogger.createLogger();
 
 //Combine multiple reducers
@@ -25,7 +25,7 @@ console.log('Initial state', store.getState());
 //Unscribe is the return value of subscribe method
 
 const unsubscribe = store.subscribe(() => {
-    console.log('Updated State',store.getState());
+    {}
 })
 
 store.dispatch(buyPen);

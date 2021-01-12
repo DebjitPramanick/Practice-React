@@ -1,4 +1,4 @@
-import { BUY_PEN, BUY_PENCIL } from "./Constants";
+import { BUY_PEN, BUY_PENCIL, FETCH_USERS_FAILURE, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS } from "./Constants";
 
 function buyPen() {
     return{
@@ -15,7 +15,31 @@ function buyPencil() {
 }
 
 
+const fetchUserRequest = () => {
+    return {
+        type: FETCH_USERS_REQUEST
+    }
+}
+
+const fetchUserSuccess = users => {
+    return {
+        type: FETCH_USERS_SUCCESS,
+        payload: users
+    }
+}
+
+const fetchUserFailure = error => {
+    return {
+        type: FETCH_USERS_FAILURE,
+        payload: error
+    }
+}
+
+
 export {
     buyPen,
-    buyPencil
+    buyPencil,
+    fetchUserRequest,
+    fetchUserSuccess,
+    fetchUserFailure
 }

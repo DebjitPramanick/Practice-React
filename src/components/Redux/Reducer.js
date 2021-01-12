@@ -1,4 +1,6 @@
-import { BUY_PEN, BUY_PENCIL } from "./Constants";
+import { act } from "react-dom/test-utils";
+import { BUY_PEN, BUY_PENCIL, FETCH_USERS_FAILURE, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS } from "./Constants";
+import { usersState } from "./State";
 
 const penReducer = (state = {penNum : 36}, action) =>{
     switch(action.type){
@@ -15,6 +17,31 @@ const pencilReducer = (state = {pencilNum : 22}, action) =>{
             return state.pencilNum - 1;
         default:
             return state
+    }
+}
+
+
+const usersReducer = (state = usersState, action) => {
+    switch(action.type){
+        case FETCH_USERS_REQUEST:
+            return{
+                ...state,
+                loading: true
+            }
+
+        case FETCH_USERS_SUCCESS:
+            return{
+                loading: false,
+                users: action.payload,
+                error: ''
+            }
+
+        case FETCH_USERS_FAILURE:
+            return{
+                loading: false,
+                users: [],
+                error: action.payload
+            }
     }
 }
 
