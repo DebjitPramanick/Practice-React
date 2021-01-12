@@ -3,7 +3,7 @@ import React from 'react'
 const Board = (props) => {
 
     const drop = (e) => {
-        e.prevebtDefault();
+        e.preventDefault();
         const cardID = e.dataTransfer.getData('cardID');
 
         const card = document.getElementById(cardID);
@@ -13,13 +13,13 @@ const Board = (props) => {
     }
 
     const dragOver = (e) => {
-        e.prevebtDefault();
+        e.preventDefault();
     }
 
     return (
         <div className={props.className} id={props.id}
         onDrop={drop}
-        onDrag={dragOver}>
+        onDragOver={dragOver}>
             {props.children}
         </div>
     )

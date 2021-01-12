@@ -178,9 +178,21 @@ form input{
   display: grid;
   grid-template-columns: repeat(2,1fr);
   grid-gap: 20px;
+  overflow: hidden;
 }
 
 .field{
   background-color: lightgray;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.draggable-card{
+  background-color: rgb(97, 134, 255);
+  color: white;
+  padding: 14px;
+  margin-bottom: 16px;
+  cursor: pointer;
 }
