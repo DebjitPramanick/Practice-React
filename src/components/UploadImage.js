@@ -14,7 +14,14 @@ const UploadImage = () => {
     const fileInput = useRef(null)
 
     const displayChange = e => {
-        setSrc(URL.createObjectURL(e.target.files[0]));
+        const reader = new FileReader();
+        reader.onload = () =>{
+            if(reader.readyState === 2){
+                setSrc(reader.result);
+            }
+        }
+        reader.readAsDataURL(e.target.files[0]);
+        
         setPopup(true);
     }
 

@@ -257,7 +257,7 @@ form input{
 }
 
 .pop-up-box{
-  height: 100vh;
+  min-height: 100vh;
   margin: auto;
   padding: 40px;
   background-color: rgba(0, 0, 0, 0.63);
@@ -265,6 +265,8 @@ form input{
   top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: center
 }
 
 .hide{
