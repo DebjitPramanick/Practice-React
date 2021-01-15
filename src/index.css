@@ -274,6 +274,25 @@ form input{
   display: none;
 }
 
+.progress-box{
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cross-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 40px;
+  cursor: pointer;
+}
+
+.cross-btn .MuiSvgIcon-root{
+  color: white;
+  font-size: 40px;
+}
 
 .crop-field{
   width: 600px;

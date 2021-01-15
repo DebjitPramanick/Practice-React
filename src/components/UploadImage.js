@@ -1,16 +1,18 @@
 import React, { useState,useRef } from 'react'
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import ReactCrop from 'react-image-crop';
+//https://www.npmjs.com/package/react-image-crop
 import 'react-image-crop/dist/ReactCrop.css';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 const UploadImage = () => {
 
-    const [src, setSrc] = useState('https://us.123rf.com/450wm/mialima/mialima1603/mialima160300025/55096766-stock-vector-male-user-icon-isolated-on-a-white-background-account-avatar-for-web-user-profile-picture-unknown-ma.jpg?ver=6');
+    const [src, setSrc] = useState('http://inexa-tnf.com/wp-content/uploads/2017/05/unknow-person.jpg');
     const [popup, setPopup] = useState(false);
     const [image, setImage] = useState(null);
     const [crop, setCrop] = useState({aspect: 1/1});
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState();
 
     const fileInput = useRef(null)
 
@@ -54,6 +56,12 @@ const UploadImage = () => {
     }
 
 
+    const closeCrop = () =>{
+        setSrc('http://inexa-tnf.com/wp-content/uploads/2017/05/unknow-person.jpg');
+        setPopup(false)
+    }
+
+
 
 
     return (
@@ -69,11 +77,21 @@ const UploadImage = () => {
             </div>
 
             <div className={popup?"pop-up-box" : "hide"}>
+                <div className="cross-btn"
+                onClick={() => closeCrop()}>
+                    <CancelIcon/>
+                </div>
                 <div className="crop-field">
                     {src && (
                         <>
-                            <ReactCrop src={src} onImageLoaded={setImage}
-                            crop={crop} onChange={setCrop}/>
+                            {(src !== 'http://inexa-tnf.com/wp-content/uploads/2017/05/unknow-person.jpg') &&
+                             (
+                                <ReactCrop src={src} onImageLoaded={setImage}
+                                crop={crop} onChange={setCrop}/>
+                            )
+                            }
+                            
+                            
 
                             <button className="crop-btn"
                             onClick={getCroppedImg}>
@@ -88,17 +106,21 @@ const UploadImage = () => {
             accept="image/*" onChange={(e) => displayChange(e)}
             ref={fileInput}></input>
 
-            <button className="btn2"
-            onClick={()=>fileInput.current.click()}>
-                <AddPhotoAlternateIcon/>
-                <p>Select Image From Storage</p>
-            </button>
+            <div className="btn-container">
+                <button className="btn2"
+                onClick={()=>fileInput.current.click()}>
+                    <AddPhotoAlternateIcon/>
+                    <p>Select Image From Storage</p>
+                </button>
 
-            <button className="btn2"
-            disabled={result? false : true}>
-                <CloudUploadIcon/>
-                <p>Upload Selected Image</p>
-            </button>
+                <button className="btn2"
+                disabled={result? false : true}>
+                    <CloudUploadIcon/>
+                    <p>Upload Selected Image</p>
+                </button>
+            </div>
+
+            
         </div>
     )
 }
