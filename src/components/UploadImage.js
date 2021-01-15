@@ -84,15 +84,9 @@ const UploadImage = () => {
                 <div className="crop-field">
                     {src && (
                         <>
-                            {(src !== 'http://inexa-tnf.com/wp-content/uploads/2017/05/unknow-person.jpg') &&
-                             (
-                                <ReactCrop src={src} onImageLoaded={setImage}
-                                crop={crop} onChange={setCrop}/>
-                            )
-                            }
+                            <ReactCrop src={src} onImageLoaded={setImage}
+                            crop={crop} onChange={setCrop}/>
                             
-                            
-
                             <button className="crop-btn"
                             onClick={getCroppedImg}>
                                 Crop Image
