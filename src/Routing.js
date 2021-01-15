@@ -10,6 +10,7 @@ import API from './components/API'
 import Contact from './components/Contact'
 import Counter from './components/Counter'
 import DragAndDrop from './components/Drag&Drop/DragAndDrop'
+import Users from './components/Firebase Crud/Users'
 import Home from './components/Home'
 import LocalStorage from './components/LocalStorage'
 import Redux from './components/Redux/Redux'
@@ -31,6 +32,7 @@ const Routing = () => {
                         <li><Link to="/redux">Redux</Link></li>
                         <li><Link to="/draganddrop">Drag & Drop</Link></li>
                         <li><Link to="/uploadimage">Upload Image</Link></li>
+                        <li><Link to="/firebasecrud">Firebase Crud</Link></li>
                     </ul>
                 </nav>
             </div>
@@ -59,6 +61,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/uploadimage">
                     <UploadImage/>
+                </Route>
+                <Route path="/firebasecrud">
+                    <Users/>
                 </Route>
                 <Route path="/">
                     <Home/>
