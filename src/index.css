@@ -255,3 +255,26 @@ form input{
 .choose-file{
   display: none;
 }
+
+.pop-up-box{
+  height: 100vh;
+  margin: auto;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.63);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.hide{
+  display: none;
+}
+
+
+.crop-field{
+  width: 600px;
+  margin: auto;
+  padding: 40px;
+  background-color: white;
+}
