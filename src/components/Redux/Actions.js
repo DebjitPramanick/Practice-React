@@ -1,17 +1,17 @@
 import { BUY_PEN, BUY_PENCIL, FETCH_USERS_FAILURE, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS } from "./Constants";
 import axios from 'axios'
 
-function buyPen() {
+function buyPen(num = 0) {
     return{
         type: BUY_PEN,
-        info: ''
+        payload: num
     }
 }
 
-function buyPencil() {
+function buyPencil(num = 0) {
     return{
         type: BUY_PENCIL,
-        info: ''
+        payload: num
     }
 }
 

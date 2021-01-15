@@ -38,7 +38,7 @@ const Redux = () => {
                 onChange={(e) => setPencil(e.target.value)}>
                 </input>
                 <button className="btn"
-                onClick={() => dispatch(buyPencil(pencils))}
+                onClick={() => dispatch(buyPencil(pencil))}
                 disabled = {pencil>0? false : true}>
                     Buy {pencil} Pencils
                 </button>

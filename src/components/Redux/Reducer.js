@@ -1,3 +1,4 @@
+import { act } from "react-dom/cjs/react-dom-test-utils.development";
 import { BUY_PEN, BUY_PENCIL, FETCH_USERS_FAILURE, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS } from "./Constants";
 import { usersState } from "./State";
 
@@ -11,7 +12,7 @@ const penReducer = (state = initialState, action) =>{
         case BUY_PEN:
             return {
                 ...state,
-                penNum: state.penNum - 1
+                penNum: state.penNum - action.payload
             }
         default:
             return state
@@ -23,7 +24,7 @@ const pencilReducer = (state = initialState, action) =>{
         case BUY_PENCIL:
             return {
                 ...state,
-                pencilNum: state.pencilNum - 1
+                pencilNum: state.pencilNum - action.payload
             }
         default:
             return state
