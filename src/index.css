@@ -55,11 +55,14 @@ body{font-family: Arial, Helvetica, sans-serif;background-color:lightgray;}
 
 .navbar nav ul{
     list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 20px;
 }
 
 .navbar nav ul li{
     display: inline;
-    margin: 0 18px;
+    white-space: nowrap;
 }
 
 a{
@@ -176,6 +179,24 @@ form input{
   cursor: pointer;
 }
 
+.btn3{
+  padding: 12px;
+  color: white;
+  background-color: rgb(97, 134, 255);
+  font-size: 16px;
+  border-radius: 4px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.btn3 p{
+  margin-left: 14px;
+  margin-top: 2px;
+}
+
 
 
 /*Drag & Drop ------------------------------*/
@@ -212,4 +233,25 @@ form input{
   width: 100%;
   outline: 0;
   border: 0;
+}
+
+
+/*Upload Image*/
+
+.img-container{
+  border: grey 1px solid;
+  width: 360px;
+  height: fit-content;
+  margin: 20px auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.img-container img{
+  width: 100%;
+}
+
+.choose-file{
+  display: none;
 }

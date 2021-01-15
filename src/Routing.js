@@ -14,6 +14,7 @@ import Home from './components/Home'
 import LocalStorage from './components/LocalStorage'
 import Redux from './components/Redux/Redux'
 import Search from './components/Search'
+import UploadImage from './components/UploadImage'
 
 const Routing = () => {
     return (
@@ -29,6 +30,7 @@ const Routing = () => {
                         <li><Link to="/localstorage">LocalStorage</Link></li>
                         <li><Link to="/redux">Redux</Link></li>
                         <li><Link to="/draganddrop">Drag & Drop</Link></li>
+                        <li><Link to="/uploadimage">Upload Image</Link></li>
                     </ul>
                 </nav>
             </div>
@@ -54,6 +56,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/draganddrop">
                     <DragAndDrop/>
+                </Route>
+                <Route path="/uploadimage">
+                    <UploadImage/>
                 </Route>
                 <Route path="/">
                     <Home/>
