@@ -10,6 +10,7 @@ import API from './components/API'
 import Contact from './components/Contact'
 import Counter from './components/Counter'
 import DragAndDrop from './components/Drag&Drop/DragAndDrop'
+import UploadUSers from './components/Firebase Crud/UploadUSers'
 import Users from './components/Firebase Crud/Users'
 import Home from './components/Home'
 import LocalStorage from './components/LocalStorage'
@@ -64,6 +65,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/firebasecrud">
                     <Users/>
+                </Route>
+                <Route path="/adduser">
+                    <UploadUSers/>
                 </Route>
                 <Route path="/">
                     <Home/>
