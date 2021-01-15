@@ -177,9 +177,11 @@ form input{
   border: 0;
   outline: 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.btn3{
+.crop-btn{
   padding: 12px;
   color: white;
   background-color: rgb(97, 134, 255);
@@ -188,11 +190,10 @@ form input{
   border: 0;
   outline: 0;
   cursor: pointer;
-  display: flex;
-  align-items: center;
+  width: 100%;
 }
 
-.btn3 p{
+.btn2 p{
   margin-left: 14px;
   margin-top: 2px;
 }

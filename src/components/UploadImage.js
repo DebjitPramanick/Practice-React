@@ -2,6 +2,7 @@ import React, { useState,useRef } from 'react'
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 const UploadImage = () => {
 
@@ -74,7 +75,7 @@ const UploadImage = () => {
                             <ReactCrop src={src} onImageLoaded={setImage}
                             crop={crop} onChange={setCrop}/>
 
-                            <button className="btn"
+                            <button className="crop-btn"
                             onClick={getCroppedImg}>
                                 Crop Image
                             </button>
@@ -87,10 +88,16 @@ const UploadImage = () => {
             accept="image/*" onChange={(e) => displayChange(e)}
             ref={fileInput}></input>
 
-            <button className="btn3"
+            <button className="btn2"
             onClick={()=>fileInput.current.click()}>
                 <AddPhotoAlternateIcon/>
                 <p>Select Image From Storage</p>
+            </button>
+
+            <button className="btn2"
+            disabled={result? false : true}>
+                <CloudUploadIcon/>
+                <p>Upload Selected Image</p>
             </button>
         </div>
     )
