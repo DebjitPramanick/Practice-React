@@ -6,7 +6,6 @@ const Users = () => {
 
     const [users, setUsers] = useState({});
 
-
     useEffect(() => {
         firebaseDB.child('users').on('value',snapshot => {
             if(snapshot.val()){
@@ -28,6 +27,9 @@ const Users = () => {
             <div className="grid-container">
                 {Object.keys(users).map(id => (
                     <div className="card" key={id}>
+                        <div className="profile-pic">
+                            <img src="https://qodebrisbane.com/wp-content/uploads/2019/07/This-is-not-a-person-2-1.jpeg" alt=''></img>
+                        </div>
                         <h2>{users[id].name}</h2>
                         <h8>{users[id].phone}</h8>
                         <h3>{users[id].age}</h3>

@@ -301,3 +301,17 @@ form input{
   padding: 40px;
   background-color: white;
 }
+
+/*Firebase CRUD*/
+
+.profile-pic{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgb(97, 134, 255);
+  overflow: hidden;
+}
+
+.profile-pic img{
+  width: 100%;
+}
