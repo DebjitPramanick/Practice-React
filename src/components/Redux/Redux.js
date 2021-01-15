@@ -9,7 +9,6 @@ const Redux = () => {
 
     const penNum = useSelector(state => state.pen.penNum);
     const pencilNum = useSelector(state => state.pencil.pencilNum);
-
     const dispatch = useDispatch();
 
     return (
