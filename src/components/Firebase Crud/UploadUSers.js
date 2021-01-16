@@ -15,52 +15,57 @@ const UploadUSers = () => {
     const [name, setName] = useState('');
     const [age, setAge] = useState(null);
     const [phone, setPhone] = useState(null);
+    const [imageURL, setImageURL] = useState('');
 
-    const [show,setShow] = useState(false);
+    const [show,setShow] = useState(false); //For showing the loader
 
     const addUser = e =>{
         e.preventDefault();
 
-        setShow(true);
+        if(name && age && phone && imageURL){
+            setShow(true);
 
-        const data = {
-            image: imageURL,
-            name: name,
-            age: age,
-            phone: phone
+            const data = {
+                image: imageURL,
+                name: name,
+                age: age,
+                phone: phone
+            }
+
+            firebaseDB.child('users').push(
+                data,
+                err => {
+                    if(err){
+                        console.log(err);
+                    }
+                }
+            )
+
+            setName('');
+
+            setTimeout(() => {
+                setShow(false)
+            },2500);
         }
 
-        firebaseDB.child('users').push(
-            data,
-            err => {
-                if(err){
-                    console.log(err);
-                }
-            }
-        )
-
-        setName('');
-
-        setTimeout(() => {
-            setShow(false)
-        },2500);
     }
 
 
     const [src, setSrc] = useState('http://inexa-tnf.com/wp-content/uploads/2017/05/unknow-person.jpg');
 
-    const [popup, setPopup] = useState(false);
-    const [image, setImage] = useState(null);
-    const [crop, setCrop] = useState({aspect: 1/1});
-    const [result, setResult] = useState('');
-    const [preview, setPreview] = useState('');
-    const [imageURL, setImageURL] = useState('');
+    const [popup, setPopup] = useState(false); //For popup box
+    const [image, setImage] = useState(null); //For setting crop image
+    const [crop, setCrop] = useState({aspect: 1/1}); //Fro setting crop value
+    const [result, setResult] = useState(''); //For setting the result after cropping
+    const [preview, setPreview] = useState(''); //For showing the preview to users
+    const [imageFile, setImageFile] = useState({}); //For setting the imagefile after upload
 
     const fileInput = useRef(null)
 
     const displayChange = e => {
 
         e.preventDefault();
+        setImageFile(e.target.files[0]);
         setSrc(URL.createObjectURL(e.target.files[0]));
         setPopup(true);
     }
@@ -106,7 +111,7 @@ const UploadUSers = () => {
 
         const base64Image = canvas.toDataURL('image/jpeg');
         
-        var file = dataURLtoFile(base64Image,"profilepic.jpg")
+        var file = dataURLtoFile(base64Image,"profilepic.jpg");
 
         console.log(file);
 
@@ -116,14 +121,9 @@ const UploadUSers = () => {
         setPopup(false);
     }
 
-    console.log(result);
-
-    
-
-
     const imageUpload = e =>{
         e.preventDefault();
-        const uploadTask = storage.ref(`images/debjit`).put(result);
+        const uploadTask = storage.ref(`images/${imageFile.name}`).put(result);
         uploadTask.on(
             "state_changed",
             snapshot => {},
@@ -132,7 +132,7 @@ const UploadUSers = () => {
             },
             () => {
                 storage.ref("images")
-                .child("debjit")
+                .child(imageFile.name)
                 .getDownloadURL()
                 .then(url => {
                     console.log(url);
