@@ -28,7 +28,6 @@ const UploadImage = () => {
         setPopup(true);
     }
 
-
     function getCroppedImg() {
         const canvas = document.createElement('canvas');
         const scaleX = image.naturalWidth / image.width;
@@ -60,8 +59,6 @@ const UploadImage = () => {
         setSrc('http://inexa-tnf.com/wp-content/uploads/2017/05/unknow-person.jpg');
         setPopup(false)
     }
-
-
 
 
     return (
