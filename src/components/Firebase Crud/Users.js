@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
-import {firebaseDB,storage} from "./Firebase"
+import {firebaseDB} from "./Firebase"
 
 const Users = () => {
 

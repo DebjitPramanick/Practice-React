@@ -13,8 +13,8 @@ import ReactCrop from 'react-image-crop';
 const UploadUSers = () => {
 
     const [name, setName] = useState('');
-    const [age, setAge] = useState();
-    const [phone, setPhone] = useState();
+    const [age, setAge] = useState(null);
+    const [phone, setPhone] = useState(null);
 
     const [show,setShow] = useState(false);
 
@@ -48,11 +48,12 @@ const UploadUSers = () => {
 
 
     const [src, setSrc] = useState('http://inexa-tnf.com/wp-content/uploads/2017/05/unknow-person.jpg');
+
     const [popup, setPopup] = useState(false);
     const [image, setImage] = useState(null);
     const [crop, setCrop] = useState({aspect: 1/1});
-    const [result, setResult] = useState();
-    const [imageName, setImageName] = useState('');
+    const [result, setResult] = useState('');
+    const [preview, setPreview] = useState('');
     const [imageURL, setImageURL] = useState('');
 
     const fileInput = useRef(null)
@@ -60,19 +61,24 @@ const UploadUSers = () => {
     const displayChange = e => {
 
         e.preventDefault();
-
-        const reader = new FileReader();
-        reader.onload = () =>{
-            if(reader.readyState === 2){
-                setSrc(reader.result);
-            }
-        }
-        reader.readAsDataURL(e.target.files[0]);
-        setImageName(e.target.files[0].name);
-
-        
-        
+        setSrc(URL.createObjectURL(e.target.files[0]));
         setPopup(true);
+    }
+
+
+    const dataURLtoFile = (dataurl, filename) => {
+ 
+        var arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), 
+            n = bstr.length, 
+            u8arr = new Uint8Array(n);
+            
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        
+        return new File([u8arr], filename, {type:mime});
     }
 
 
@@ -96,19 +102,28 @@ const UploadUSers = () => {
           crop.width,
           crop.height,
         );
+        
 
         const base64Image = canvas.toDataURL('image/jpeg');
-        setResult(base64Image);
+        
+        var file = dataURLtoFile(base64Image,"profilepic.jpg")
+
+        console.log(file);
+
+        setPreview(base64Image);
+        setResult(file);
 
         setPopup(false);
     }
+
+    console.log(result);
 
     
 
 
     const imageUpload = e =>{
         e.preventDefault();
-        const uploadTask = storage.ref(`images/${imageName}`).put(result);
+        const uploadTask = storage.ref(`images/debjit`).put(result);
         uploadTask.on(
             "state_changed",
             snapshot => {},
@@ -117,13 +132,16 @@ const UploadUSers = () => {
             },
             () => {
                 storage.ref("images")
-                .child(imageName)
+                .child("debjit")
                 .getDownloadURL()
                 .then(url => {
                     console.log(url);
+                    setImageURL(url)
                 })
             }
         )
+
+        console.log(src)
     }
 
 
@@ -141,55 +159,57 @@ const UploadUSers = () => {
                 </Link>
 
                 <div className="img-container">
-                {result? (
-                    <img src={result} alt=""/>
-                ):(
-                    <img src={src} alt=""/>
-                )}
+                    {preview? (
+                        <img src={preview} alt=""/>
+                    ):(
+                        <img src={src} alt=""/>
+                    )}
                 
-            </div>
-
-            <div className={popup?"pop-up-box" : "hide"}>
-                <div className="cross-btn"
-                onClick={() => closeCrop()}>
-                    <CancelIcon/>
                 </div>
-                <div className="crop-field">
-                    {src && (
-                        <>
-                            <ReactCrop src={src} onImageLoaded={setImage}
-                            crop={crop} onChange={setCrop}/>
-                            
-                            <button className="crop-btn"
-                            onClick={getCroppedImg}>
-                                Crop Image
-                            </button>
-                        </>
-                    )} 
+
+                <div className={popup?"pop-up-box" : "hide"}>
+                    <div className="cross-btn"
+                    onClick={() => closeCrop()}>
+                        <CancelIcon/>
+                    </div>
+                    <div className="crop-field">
+                        {src && (
+                            <>
+                                <ReactCrop src={src} onImageLoaded={setImage}
+                                crop={crop} onChange={setCrop}/>
+
+                                {console.log(src)}
+
+                                <button className="crop-btn"
+                                onClick={getCroppedImg}>
+                                    Crop Image
+                                </button>
+                            </>
+                        )} 
+                    </div>
                 </div>
-            </div>
 
-            <input type="file" className="choose-file"
-            accept="image/*" onChange={(e) => displayChange(e)}
-            ref={fileInput}></input>
+                <input type="file" className="choose-file"
+                accept="image/*" onChange={(e) => displayChange(e)}
+                ref={fileInput}></input>
 
-            <div className="btn-container">
-                <button className="btn2"
-                onClick={(e)=>{
-                    e.preventDefault();
-                    fileInput.current.click()
-                }}>
-                    <AddPhotoAlternateIcon/>
-                    <p>Select Image From Storage</p>
-                </button>
+                <div className="btn-container">
+                    <button className="btn2"
+                    onClick={(e)=>{
+                        e.preventDefault();
+                        fileInput.current.click()
+                    }}>
+                        <AddPhotoAlternateIcon/>
+                        <p>Select Image From Storage</p>
+                    </button>
 
-                <button className="btn2"
-                disabled={result? false : true}
-                onClick={(e) => imageUpload(e)}>
-                    <CloudUploadIcon/>
-                    <p>Upload Selected Image</p>
-                </button>
-            </div>
+                    <button className="btn2"
+                    disabled={result? false : true}
+                    onClick={(e) => imageUpload(e)}>
+                        <CloudUploadIcon/>
+                        <p>Upload Selected Image</p>
+                    </button>
+                </div>
 
                 <input type="text" placeholder="Enter Name"
                 onChange={(e)=>setName(e.target.value)}></input>
