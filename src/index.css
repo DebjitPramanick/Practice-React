@@ -370,3 +370,11 @@ form input{
   align-items: center;
   justify-content: space-evenly;
 }
+
+
+.comp-container{
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

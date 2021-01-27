@@ -17,6 +17,8 @@ import Search from './components/Search'
 import UploadImage from './components/UploadImage'
 import UseContext from './components/hooks/UseContext'
 import UseReducer from './components/hooks/UseReducer'
+import GlobalContext from './components/hooks/GlobalContext'
+import DataFetching from './components/hooks/DataFetching'
 
 
 export const Context = React.createContext();
@@ -44,6 +46,8 @@ const Routing = () => {
                                 <li><Link to="/uploadimage">Upload Image</Link></li>
                                 <li><Link to="/useContext">Use Context</Link></li>
                                 <li><Link to="/useReducer">Use Reducer</Link></li>
+                                <li><Link to="/globalcontext">GlobalContext</Link></li>
+                                <li><Link to="/datafetching">Data Fetching</Link></li>
                             </ul>
                         </nav>
                     </div>
@@ -78,6 +82,12 @@ const Routing = () => {
                         </Route>
                         <Route path="/useReducer">
                             <UseReducer/>
+                        </Route>
+                        <Route path="/globalcontext">
+                            <GlobalContext />
+                        </Route>
+                        <Route path="/datafetching">
+                            <DataFetching />
                         </Route>
                         <Route path="/">
                             <Home/>
